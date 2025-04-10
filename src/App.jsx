@@ -15,7 +15,7 @@ const LEDDetailPageGenerator = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer YOUR_OPENAI_API_KEY`, // ← 여기 본인 키로 바꿔야 함!
+          Authorization: `Bearer YOUR_OPENAI_API_KEY`,
         },
         body: JSON.stringify({
           model: "gpt-4",
@@ -43,16 +43,37 @@ const LEDDetailPageGenerator = () => {
         onChange={(e) => setProductName(e.target.value)}
         style={{ width: '100%', padding: '0.5rem', margin: '1rem 0', border: '1px solid #ccc', borderRadius: '8px' }}
       />
-    <button
-  onClick={generateHeadline}
-  disabled={loading || !productName}
-  style={{
-    padding: '0.5rem 1rem',
-    background: '#6366f1',
-    color: 'white',
-    border: 'none',
-    borderRadius: '8px'
-  }}
->
-  {loading ? "생성 중..." : "설치방법 카피 생성하기"}
-</button>
+      <button
+        onClick={generateHeadline}
+        disabled={loading || !productName}
+        style={{
+          padding: '0.5rem 1rem',
+          background: '#6366f1',
+          color: 'white',
+          border: 'none',
+          borderRadius: '8px'
+        }}
+      >
+        {loading ? "생성 중..." : "설치방법 카피 생성하기"}
+      </button>
+
+      {headline && (
+        <div style={{ marginTop: '2rem' }}>
+          <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold' }}>{productName}</h2>
+          <img src="https://via.placeholder.com/400x200.png?text=LED+제품+이미지" alt="제품 이미지" style={{ width: '100%', borderRadius: '8px', marginTop: '1rem' }} />
+          <h3 style={{ marginTop: '1.5rem', fontWeight: 'bold' }}>특장점</h3>
+          <ul style={{ paddingLeft: '1.2rem', listStyle: 'disc' }}>
+            <li>합리적인 가격</li>
+            <li>손쉬운 설치</li>
+            <li>자체생산의 좋은 품질</li>
+          </ul>
+          <h3 style={{ marginTop: '1.5rem', fontWeight: 'bold' }}>설치방법</h3>
+          <p style={{ fontStyle: 'italic' }}>{headline}</p>
+          <p style={{ fontSize: '0.875rem', color: '#666' }}>※ 세부 설치 방법은 사용자가 직접 추가해 주세요.</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default LEDDetailPageGenerator;
