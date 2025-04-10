@@ -43,5 +43,17 @@ const LEDDetailPageGenerator = () => {
         onChange={(e) => setProductName(e.target.value)}
         style={{ width: '100%', padding: '0.5rem', margin: '1rem 0', border: '1px solid #ccc', borderRadius: '8px' }}
       />
-      <button onClick={generateHeadline} disabled={loading || !productName} style={{ padding: '0.5rem 1rem', background: '#6366f1', color: 'white', border: 'none', borderRadius: '
+      <button
+  onClick={generateHeadline}
+  disabled={loading || !productName}
+  style={{
+    padding: '0.5rem 1rem',
+    background: '#6366f1',
+    color: 'white',
+    border: 'none',
+    borderRadius: '8px'
+  }}
+>
+  {loading ? "생성 중..." : "설치방법 카피 생성하기"}
+</button>
 
